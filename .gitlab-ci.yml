@@ -10,9 +10,9 @@ generate_pipeline:
 run_pipeline:
   stage: build
   needs:
-  - setup
+  - generate_pipeline
   trigger:
     include:
     - artifact: pipeline.yaml
-      job: setup
+      job: generate_pipeline
     strategy: depend
