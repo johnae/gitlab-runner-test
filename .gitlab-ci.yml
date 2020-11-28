@@ -1,10 +1,10 @@
 setup:
   stage: .pre
   script: |
-    nix eval -f pipeline.nix --json "" > pipeline.json
+    nix eval -f pipeline.nix --json "" | nix shell nixpkgs#yj -c yj -jy > pipeline.yaml
   artifacts:
     paths:
-    - pipeline.json
+    - pipeline.yaml
 
 run:
   stage: build
@@ -12,6 +12,6 @@ run:
   - setup
   trigger:
     include:
-    - artifact: pipeline.json
+    - artifact: pipeline.yaml
       job: setup
     strategy: depend
