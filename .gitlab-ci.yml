@@ -1,12 +1,13 @@
-setup:
+generate_pipeline:
   stage: .pre
   script: |
-    nix eval -f pipeline.nix --json "" | nix shell nixpkgs#yj -c yj -jy > pipeline.yaml
+    nix eval -f .gitlab-ci.nix --json "" | \
+      nix shell nixpkgs#yj -c yj -jy > pipeline.yaml
   artifacts:
     paths:
     - pipeline.yaml
 
-run:
+run_pipeline:
   stage: build
   needs:
   - setup
