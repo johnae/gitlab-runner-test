@@ -1,7 +1,7 @@
 generate_pipeline:
   stage: .pre
   script: |
-    nix shell nixpkgs#yj -c bash -c <<GITLAB
+    nix shell nixpkgs#yj -c bash <<GITLAB
     yj -yj < .ci.yaml > .ci.json
     nix eval -f .ci.nix --json "" > pipeline.yaml
     GITLAB

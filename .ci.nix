@@ -12,7 +12,7 @@ mapAttrs
       removeAttrs
         (v // {
           script = ''
-            nix shell ${concatStringsSep " " (map (p: "nixpkgs#${p}") packages)} -c bash -c <<NIX
+            nix shell ${concatStringsSep " " (map (p: "nixpkgs#${p}") packages)} -c bash <<NIX
             ${script}
             NIX 
           '';
