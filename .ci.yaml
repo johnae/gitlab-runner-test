@@ -1,0 +1,17 @@
+one:
+  packages:
+  - nodejs-12_x
+  - go
+  script: |
+    go version
+    node --version
+    echo ONE done
+
+two:
+  packages:
+  - nodejs-12_x
+  - go
+  script: |
+    go version
+    node --version
+    echo TWO done
